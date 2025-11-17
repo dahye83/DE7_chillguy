@@ -1,0 +1,117 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+*.db
+*.sqlite
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+pip-wheel-metadata/
+
+# =========================
+# Airflow
+# =========================
+# log
+logs/
+airflow/logs/
+airflow/unittests.cfg
+
+# Temporary files
+airflow/tmp/ 
+
+# Airflow PID files
+*.pid
+airflow/airflow-webserver.pid
+airflow/airflow-scheduler.pid
+
+# Airflow DB
+airflow/airflow.db
+
+# Python cache
+airflow/__pycache__/
+airflow/**/*.py[cod]
+airflow/**/__pycache__/
+
+# =========================
+# Docker / Environment
+# =========================
+# Docker volumes & artifacts
+docker/volumes/
+docker/*.tar
+docker/*.bak
+docker/*.orig
+docker/*.rej
+
+# Env files (민감정보)
+.env
+.env.*
+docker/env/*.env
+
+# =========================
+# OS / IDE
+# =========================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.TemporaryItems
+.AppleDB
+.AppleDesktop
+.apdisk
+.com.apple.timemachine.donotpresent
+.VolumeIcon.icns
+Icon
+Icon\r
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.iml
+
+# =========================
+# Virtual Environments
+# =========================
+.venv/
+venv/
+env/
+ENV/
+
+# =========================
+# 기타
+# =========================
+*.swp
+*.swo
+*.bak
+*.tmp
+*.orig
+*.rej
+*.log
