@@ -14,7 +14,7 @@ S3_CONN_ID = "s3_conn_id"
 BASE_URL = "https://www.airport.kr/dep/ap_ko/getDepPasSchList.do"
 
 default_args = {
-    "owner": "chillguy",
+    "owner": "sihyun",
     "retries": 2,
     "retry_delay": timedelta(minutes=3),
 }
@@ -22,7 +22,7 @@ default_args = {
 @dag(
     dag_id="airportinfo_departure_7days_to_s3",
     description="인천공항 출발 정보 7일 수집 후 S3(dynamic/) 저장",
-    schedule="0 5 * * *", #14시
+    schedule="0 5 * * *",
     start_date=datetime(2025, 11, 17),
     catchup=False,
     default_args=default_args,
@@ -30,16 +30,14 @@ default_args = {
 )
 def dag_airportinfo_departure_7days():
 
-    # 단일 날짜 조회
+    # 1) 단일 날짜 조회
     def fetch_one_day(date_str):
 
         headers = {
             "accept": "*/*",
             "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
             "origin": "https://www.airport.kr",
-            "referer": (
-                f"https://www.airport.kr/ap_ko/869/subview.do"
-            ),
+            "referer": "https://www.airport.kr/ap_ko/869/subview.do",
             "user-agent": "Mozilla/5.0",
             "x-requested-with": "XMLHttpRequest",
         }
@@ -51,8 +49,7 @@ def dag_airportinfo_departure_7days():
             "daySel": date_str,
             "todayDate": date_str,
             "tomorrowDate": (
-                datetime.strptime(date_str, "%Y%m%d")
-                + timedelta(days=1)
+                datetime.strptime(date_str, "%Y%m%d") + timedelta(days=1)
             ).strftime("%Y%m%d"),
             "fromTime": "0000",
             "toTime": "2359",
@@ -67,7 +64,7 @@ def dag_airportinfo_departure_7days():
         data = res.json()
         return data.get("scheduleList", [])
 
-    # 7일치 조회
+    # 2) 7일치 조회
     @task
     def fetch_7days():
         all_rows = []
@@ -83,7 +80,7 @@ def dag_airportinfo_departure_7days():
 
         return json.dumps(all_rows, ensure_ascii=False)
 
-    # 한국어 컬럼 + 날짜 포함 → S3 저장
+    # 3) 한국어 컬럼 + 날짜 + 목적지코드 포함 → S3 저장
     @task
     def save_to_s3(json_text: str):
         rows = json.loads(json_text)
@@ -93,11 +90,12 @@ def dag_airportinfo_departure_7days():
 
         df = pd.DataFrame(rows)
 
-        # 필요한 필드만 추출 + 한국어 컬럼명 변환
+        # 한국어 컬럼명 + 목적지 코드 추가
         df_out = pd.DataFrame({
             "날짜": df.get("date"),
             "출발시간": df.get("stime"),
             "목적지": df.get("airportName1Ko"),
+            "목적지코드(IATA)": df.get("p1code"),   
             "운항편명/항공사": df.get("fnumber") + " / " + df.get("airlineNameKo"),
             "터미널": df.get("terminal"),
             "체크인 카운터": df.get("chkinrange"),
