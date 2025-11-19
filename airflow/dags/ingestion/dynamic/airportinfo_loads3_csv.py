@@ -7,10 +7,11 @@ from airflow.models import Variable
 from airflow.hooks.S3_hook import S3Hook
 import requests
 
-# 변수
+# 환경 변수
 BUCKET_NAME = Variable.get("BUCKET_NAME")
 S3_CONN_ID = "s3_conn_id"
 
+# 여객 출발 시간표 API 엔드포인트
 BASE_URL = "https://www.airport.kr/dep/ap_ko/getDepPasSchList.do"
 
 default_args = {
@@ -20,19 +21,21 @@ default_args = {
 }
 
 @dag(
-    dag_id="airportinfo_departure_7days_to_s3",
+    dag_id="airportinfo_7days_loads3",
     description="인천공항 출발 정보 7일 수집 후 S3(dynamic/) 저장",
-    schedule="0 5 * * *",
+    schedule="0 5 * * *",  # 2:00 PM 
     start_date=datetime(2025, 11, 17),
     catchup=False,
     default_args=default_args,
     tags=["airport", "7days", "s3"],
 )
+
 def dag_airportinfo_departure_7days():
 
-    # 1) 단일 날짜 조회
+    # 단일 날짜 조회(현재 날짜)
     def fetch_one_day(date_str):
 
+        # 브라우저 실제 요청 헤더 
         headers = {
             "accept": "*/*",
             "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
@@ -42,6 +45,7 @@ def dag_airportinfo_departure_7days():
             "x-requested-with": "XMLHttpRequest",
         }
 
+        # 요청할 데이터
         form_payload = {
             "siteId": "ap_ko",
             "langSe": "ko",
@@ -53,7 +57,7 @@ def dag_airportinfo_departure_7days():
             ).strftime("%Y%m%d"),
             "fromTime": "0000",
             "toTime": "2359",
-            "arrOrDep": "D",
+            "arrOrDep": "D", #출발, 도착편 -> "A"
             "page": "1",
             "row": "2000",
         }
@@ -61,29 +65,30 @@ def dag_airportinfo_departure_7days():
         res = requests.post(BASE_URL, headers=headers, data=form_payload)
         res.raise_for_status()
 
+        # 리턴 :원하는 데이터 -> "scheduleList" : []
         data = res.json()
         return data.get("scheduleList", [])
 
-    # 2) 7일치 조회
+    # 7일치 조회
     @task
     def fetch_7days():
         all_rows = []
 
         for i in range(7):
             d = (datetime.today() + timedelta(days=i)).strftime("%Y%m%d")
+            #fetch_one_day() 7번 반복
             rows = fetch_one_day(d)
 
             for r in rows:
-                r["date"] = d  # ⭐ 날짜 추가
+                r["date"] = d  # 날짜 추가
 
-            all_rows.extend(rows)
+            all_rows.extend(rows) # 7일 데이터 합치기
 
-        return json.dumps(all_rows, ensure_ascii=False)
+        return all_rows
 
-    # 3) 한국어 컬럼 + 날짜 + 목적지코드 포함 → S3 저장
+    # 한국어 컬럼 + 날짜 + 목적지코드 포함 → S3
     @task
-    def save_to_s3(json_text: str):
-        rows = json.loads(json_text)
+    def save_to_s3(rows):
 
         if not rows:
             raise ValueError("❌ 저장할 데이터가 없습니다.")
@@ -105,7 +110,7 @@ def dag_airportinfo_departure_7days():
 
         csv_str = df_out.to_csv(index=False, encoding="utf-8-sig")
 
-        filename = f"dynamic/airportinfo_{datetime.today().strftime('%Y%m%d')}_7days.csv"
+        filename = f"dynamic/{datetime.today().strftime('%Y%m%d')}_airportinfo_loads3.csv"
 
         s3 = S3Hook(aws_conn_id=S3_CONN_ID)
         s3.load_string(
