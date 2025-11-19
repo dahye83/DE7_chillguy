@@ -48,13 +48,16 @@ def dag_airport_schedule_loadsnow():
 
             if df.empty:
                 raise ValueError(f"S3 파일이 비어있습니다: s3://{s3_bucket}/{s3_key}")
+            
+            df["DATE"] = pd.to_datetime(df["DATE"], format="%Y%m%d").dt.date
+            df["TIME"] = pd.to_datetime(df["TIME"], format="%H:%M").dt.time
 
             # 2️⃣ Snowflake Hook
             hook = SnowflakeHook(snowflake_conn_id=snowflake_conn_id)
             conn = hook.get_conn() # 실제 커넥션 객체 가져오기
             cs = conn.cursor()
 
-            # 컬럼 매핑
+            # 컬럼 타입 매핑
             sf_cols = []
             for col in df.columns:
                 col_up = col.upper()
