@@ -95,23 +95,23 @@ def dag_airportinfo_departure_7days():
 
         df = pd.DataFrame(rows)
 
-        # 한국어 컬럼명 + 목적지 코드 추가
+        # 대문자 영문 컬럼명 + 목적지 코드 추가
         df_out = pd.DataFrame({
-            "날짜": df.get("date"),
-            "출발시간": df.get("stime"),
-            "목적지": df.get("airportName1Ko"),
-            "목적지코드(IATA)": df.get("p1code"), 
-            "운항편명" : df.get("fnumber"),
-            "항공사": df.get("airlineNameKo"),
-            "터미널": df.get("terminal"),
-            "체크인 카운터": df.get("chkinrange"),
-            "탑승구": df.get("gatenumber"),
-            "출발현황": df.get("stattxt"),
+            "DDATE": df.get("date"),
+            "DTIME": df.get("stime"),
+            "DESTINATION": df.get("airportName1Ko"),
+            "IATA": df.get("p1code"), 
+            "FLIGHT" : df.get("fnumber"),
+            "AIRLINE": df.get("airlineNameKo"),
+            "TERMINAL": df.get("terminal"),
+            "CHECKIN COUNTER": df.get("chkinrange"),
+            "GATE": df.get("gatenumber"),
+            "DSTATUS": df.get("stattxt"),
         })
 
         csv_str = df_out.to_csv(index=False, encoding="utf-8-sig")
 
-        filename = f"dynamic/{datetime.today().strftime('%Y%m%d')}_airportinfo_loads3.csv"
+        filename = "airportschedule_loads3_csv" #파일명 고정
 
         s3 = S3Hook(aws_conn_id=S3_CONN_ID)
         s3.load_string(
