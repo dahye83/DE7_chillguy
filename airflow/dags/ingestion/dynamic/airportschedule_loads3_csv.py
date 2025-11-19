@@ -100,7 +100,7 @@ def dag_airportinfo_departure_7days():
             "DDATE": df.get("date"),
             "DTIME": df.get("stime"),
             "DESTINATION": df.get("airportName1Ko"),
-            "IATA": df.get("p1code"), 
+            "DAIRPORTCODE": df.get("p1code"), 
             "FLIGHT" : df.get("fnumber"),
             "AIRLINE": df.get("airlineNameKo"),
             "TERMINAL": df.get("terminal"),
