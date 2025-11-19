@@ -21,7 +21,7 @@ default_args = {
 }
 
 @dag(
-    dag_id="airportinfo_7days_loads3",
+    dag_id="airportschedule_loads3_csv",
     description="인천공항 출발 정보 7일 수집 후 S3(dynamic/) 저장",
     schedule="0 5 * * *",  # 2:00 PM 
     start_date=datetime(2025, 11, 17),
@@ -99,8 +99,8 @@ def dag_airportinfo_departure_7days():
         df_out = pd.DataFrame({
             "DDATE": df.get("date"),
             "DTIME": df.get("stime"),
-            "DESTINATION": df.get("airportName1Ko"),
-            "DAIRPORTCODE": df.get("p1code"), 
+            "AIRPORT": df.get("airportName1Ko"), # 컬럼 통일 위해 목적지 -> 해당 공항 
+            "AIRPORTCODE": df.get("p1code"),        #IATA -> DAIRPORTCODE 변경
             "FLIGHT" : df.get("fnumber"),
             "AIRLINE": df.get("airlineNameKo"),
             "TERMINAL": df.get("terminal"),
