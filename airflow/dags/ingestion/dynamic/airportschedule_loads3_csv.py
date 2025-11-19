@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 from airflow.decorators import dag, task
 from airflow.models import Variable
 from airflow.hooks.S3_hook import S3Hook
+from airflow.operators.trigger_dagrun import TriggerDagRunOperator
 import requests
 
 # 환경 변수
@@ -12,7 +13,7 @@ BUCKET_NAME = Variable.get("BUCKET_NAME")
 S3_CONN_ID = "s3_conn_id"
 
 # 여객 출발 시간표 API 엔드포인트
-BASE_URL = "https://www.airport.kr/dep/ap_ko/getDepPasSchList.do"
+BASE_URL = Variable.get("BASE_URL")
 
 default_args = {
     "owner": "sihyun",
@@ -88,7 +89,7 @@ def dag_airportinfo_departure_7days():
 
     # 한국어 컬럼 + 날짜 + 목적지코드 포함 → S3
     @task
-    def save_to_s3(rows):
+    def upload_to_s3(rows):
 
         if not rows:
             raise ValueError("❌ 저장할 데이터가 없습니다.")
@@ -97,10 +98,10 @@ def dag_airportinfo_departure_7days():
 
         # 대문자 영문 컬럼명 + 목적지 코드 추가
         df_out = pd.DataFrame({
-            "DDATE": df.get("date"),
-            "DTIME": df.get("stime"),
+            "DATE": df.get("date"),
+            "TIME": df.get("stime"),
             "AIRPORT": df.get("airportName1Ko"), # 컬럼 통일 위해 목적지 -> 해당 공항 
-            "AIRPORTCODE": df.get("p1code"),        #IATA -> DAIRPORTCODE 변경
+            "IATA_CODE": df.get("p1code"),        
             "FLIGHT" : df.get("fnumber"),
             "AIRLINE": df.get("airlineNameKo"),
             "TERMINAL": df.get("terminal"),
@@ -124,7 +125,14 @@ def dag_airportinfo_departure_7days():
         print(f"📤 저장완료 → s3://{BUCKET_NAME}/{filename}")
         return filename
 
-    save_to_s3(fetch_7days())
+    # ------------------------
+    # DAG B(airportschedule_loadsnow_csv) 트리거 추가
+    # ------------------------
+    trigger_snowflake = TriggerDagRunOperator(
+        task_id="trigger_snowflake_dag",
+        trigger_dag_id="airportschedule_loadsnow_csv"
+    )
 
+    upload_to_s3(fetch_7days()) >> trigger_snowflake  # snowflake dag 실행 연결
 
 dag_airportinfo_departure_7days()

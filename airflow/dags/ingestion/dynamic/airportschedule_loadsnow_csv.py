@@ -1,130 +1,115 @@
-import json
-import pandas as pd
-from datetime import datetime, timedelta
-
 from airflow.decorators import dag, task
+from airflow.providers.amazon.aws.hooks.s3 import S3Hook
+from airflow.providers.snowflake.hooks.snowflake import SnowflakeHook
+from snowflake.connector.pandas_tools import write_pandas
 from airflow.models import Variable
-from airflow.hooks.S3_hook import S3Hook
-import requests
+from datetime import datetime, timedelta
+import pandas as pd
+from io import BytesIO
+import logging
 
-# 환경 변수
 BUCKET_NAME = Variable.get("BUCKET_NAME")
-S3_CONN_ID = "s3_conn_id"
+S3_PATH = "airportschedule_loads3_csv"  
 
-# 여객 출발 시간표 API 엔드포인트
-BASE_URL = "https://www.airport.kr/dep/ap_ko/getDepPasSchList.do"
 
-default_args = {
-    "owner": "sihyun",
-    "retries": 2,
-    "retry_delay": timedelta(minutes=3),
-}
+# =========================
+# 3️⃣ 범용 S3 → Snowflake 적재 Task 생성 함수
+# =========================
+def create_s3_to_snowflake_task(
+    task_id: str,
+    s3_bucket: str,
+    s3_key: str,
+    snowflake_conn_id: str,
+    database: str,
+    schema: str,
+    table_name: str,
+):
 
+    @task(task_id=task_id)
+    def s3_to_snowflake():
+
+        # 1️⃣ S3 CSV 가져오기
+        s3_hook = S3Hook(aws_conn_id="s3_conn_id")
+        obj = s3_hook.get_key(s3_key, bucket_name=s3_bucket)
+        df = pd.read_csv(BytesIO(obj.get()['Body'].read()), encoding='utf-8-sig')
+
+        if df.empty:
+            raise ValueError(f"S3 파일 비어 있음: s3://{s3_bucket}/{s3_key}")
+
+        # 2️⃣ Snowflake 연결
+        hook = SnowflakeHook(snowflake_conn_id=snowflake_conn_id)
+        conn = hook.get_conn()
+        cs = conn.cursor()
+
+        # =========================
+        # 컬럼 타입 자동 생성 (DATE, TIME만 특수 처리)
+        # =========================
+        sf_columns = []
+        for col in df.columns:
+            col_upper = col.upper()
+
+            if col_upper == "DATE":
+                sf_columns.append(f'"{col}" DATE')
+            elif col_upper == "TIME":
+                sf_columns.append(f'"{col}" TIME')
+            else:
+                sf_columns.append(f'"{col}" VARCHAR')
+
+        create_cols = ", ".join(sf_columns)
+
+        create_sql = f"""
+            CREATE TABLE IF NOT EXISTS {database}.{schema}.{table_name} (
+                {create_cols}
+            );
+        """
+
+        try:
+            cs.execute(create_sql)
+
+            # 4️⃣ pandas → Snowflake 적재
+            success, nchunks, nrows, _ = write_pandas(
+                    conn, df, table_name, schema=schema, database=database
+                )
+
+            if success:
+                logging.info(f"Snowflake 적재 완료 ✅ Total rows: {nrows}")
+            else:
+                logging.error("Snowflake 적재 실패 ❌")
+
+        finally:
+            cs.close()
+            conn.close()
+
+    return s3_to_snowflake()
+
+
+# =========================
+# 4️⃣ DAG 정의
+# =========================
 @dag(
     dag_id="airportschedule_loadsnow_csv",
-    description="인천공항 출발 정보 7일 수집 후 S3(dynamic/) 저장",
-    schedule="0 5 * * *",  # 2:00 PM 
+    schedule="10 5 * * *",
     start_date=datetime(2025, 11, 17),
     catchup=False,
-    default_args=default_args,
-    tags=["airport", "7days", "s3"],
+    tags=["snowflake", "airport"],
 )
+def dag_airport_schedule_loadsnow():
 
-def dag_airportinfo_departure_7days():
+    # 기존 DAG A(airportschedule_loads3_csv)에서 정의한 task 호출 가능
+    fetch_task = fetch_7days()
+    upload_task = upload_to_s3(fetch_task)
 
-    # 단일 날짜 조회(현재 날짜)
-    def fetch_one_day(date_str):
+    snowflake_task = create_s3_to_snowflake_task(
+        task_id="s3_to_snowflake",
+        s3_bucket=BUCKET_NAME,
+        s3_key=S3_PATH,
+        snowflake_conn_id="snowflake_conn_id",
+        database="TEAM_7_CHILL",
+        schema="BRONZE",
+        table_name="BR_AIRPORT_SCHEDULE_7_DAILY",
+    )
 
-        # 브라우저 실제 요청 헤더 
-        headers = {
-            "accept": "*/*",
-            "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-            "origin": "https://www.airport.kr",
-            "referer": "https://www.airport.kr/ap_ko/869/subview.do",
-            "user-agent": "Mozilla/5.0",
-            "x-requested-with": "XMLHttpRequest",
-        }
-
-        # 요청할 데이터
-        form_payload = {
-            "siteId": "ap_ko",
-            "langSe": "ko",
-            "curDate": date_str,
-            "daySel": date_str,
-            "todayDate": date_str,
-            "tomorrowDate": (
-                datetime.strptime(date_str, "%Y%m%d") + timedelta(days=1)
-            ).strftime("%Y%m%d"),
-            "fromTime": "0000",
-            "toTime": "2359",
-            "arrOrDep": "D", #출발, 도착편 -> "A"
-            "page": "1",
-            "row": "2000",
-        }
-
-        res = requests.post(BASE_URL, headers=headers, data=form_payload)
-        res.raise_for_status()
-
-        # 리턴 :원하는 데이터 -> "scheduleList" : []
-        data = res.json()
-        return data.get("scheduleList", [])
-
-    # 7일치 조회
-    @task
-    def fetch_7days():
-        all_rows = []
-
-        for i in range(7):
-            d = (datetime.today() + timedelta(days=i)).strftime("%Y%m%d")
-            #fetch_one_day() 7번 반복
-            rows = fetch_one_day(d)
-
-            for r in rows:
-                r["date"] = d  # 날짜 추가
-
-            all_rows.extend(rows) # 7일 데이터 합치기
-
-        return all_rows
-
-    # 한국어 컬럼 + 날짜 + 목적지코드 포함 → S3
-    @task
-    def save_to_s3(rows):
-
-        if not rows:
-            raise ValueError("❌ 저장할 데이터가 없습니다.")
-
-        df = pd.DataFrame(rows)
-
-        # 대문자 영문 컬럼명 + 목적지 코드 추가
-        df_out = pd.DataFrame({
-            "DDATE": df.get("date"),
-            "DTIME": df.get("stime"),
-            "DESTINATION": df.get("airportName1Ko"),
-            "IATA": df.get("p1code"), 
-            "FLIGHT" : df.get("fnumber"),
-            "AIRLINE": df.get("airlineNameKo"),
-            "TERMINAL": df.get("terminal"),
-            "CHECKIN COUNTER": df.get("chkinrange"),
-            "GATE": df.get("gatenumber"),
-            "DSTATUS": df.get("stattxt"),
-        })
-
-        csv_str = df_out.to_csv(index=False, encoding="utf-8-sig")
-
-        filename = "dynamic/airportschedule_loads3.csv" #파일명 고정
-
-        s3 = S3Hook(aws_conn_id=S3_CONN_ID)
-        s3.load_string(
-            string_data=csv_str,
-            key=filename,
-            bucket_name=BUCKET_NAME,
-            replace=True,
-        )
-
-        print(f"📤 저장완료 → s3://{BUCKET_NAME}/{filename}")
-        return filename
-
-    save_to_s3(fetch_7days())
+    upload_task >> snowflake_task
 
 
-dag_airportinfo_departure_7days()
+dag_airport_schedule_loadsnow()
