@@ -12,7 +12,7 @@ import requests
 BUCKET_NAME = Variable.get("BUCKET_NAME")
 S3_CONN_ID = "s3_conn_id"
 
-# 여객 출발 시간표 API 엔드포인트
+# 여객 출발 시간표 API 엔드포인트 ="https://www.airport.kr/dep/ap_ko/getDepPasSchList.do" 
 BASE_URL = Variable.get("BASE_URL")
 
 default_args = {
