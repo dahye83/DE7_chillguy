@@ -22,7 +22,7 @@ default_args = {
 }
 
 @dag(
-    dag_id="airportschedule_loads3_csv",
+    dag_id="airport_schedule_to_s3",
     description="인천공항 출발 정보 7일 수집 후 S3(dynamic/) 저장",
     schedule="0 5 * * *",  # 2:00 PM 
     start_date=datetime(2025, 11, 17),

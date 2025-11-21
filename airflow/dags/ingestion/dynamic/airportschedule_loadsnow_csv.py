@@ -18,7 +18,7 @@ default_args = {
 }
 
 @dag(
-    dag_id="airportschedule_loadsnow_csv",
+    dag_id="airport_schedule_to_snowflake",
     start_date=datetime(2025, 11, 17),
     schedule=None,          # 외부 DAG에서 Trigger
     catchup=False,
