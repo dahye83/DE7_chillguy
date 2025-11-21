@@ -7,7 +7,44 @@ import pandas as pd
 from io import BytesIO
 from datetime import datetime, timedelta
 import logging
+import traceback 
+import requests
 
+#slack 설정
+SLACK_WEBHOOK_URL = Variable.get("slack_webhook_url")
+
+def slack_on_failure(context):
+    dag_id = context.get("dag").dag_id
+    task_id = context.get("task_instance").task_id
+    execution_date = context.get("execution_date")
+    log_url = context.get("task_instance").log_url
+    exception = context.get("exception")
+
+    error_msg = "".join(
+        traceback.format_exception(None, exception, exception.__traceback__)
+    ) if exception else "No exception info"
+
+    message = (
+        f":red_circle: *DAG {dag_id}*의 Task *{task_id}* 실패 ❌\n"
+        f"Execution Date: {execution_date}\n"
+        f"Error:\n```{error_msg}```\n"
+        f"<{log_url}|🔗 로그 보기>"
+    )
+    requests.post(SLACK_WEBHOOK_URL, json={"text": message})
+
+def slack_on_success(context):
+    dag_id = context.get("dag").dag_id
+    task_id = context.get("task_instance").task_id
+    execution_date = context.get("execution_date")
+
+    message = (
+        f":white_check_mark: *DAG {dag_id}* Task *{task_id}* 성공 🎉\n"
+        f"Execution Date: {execution_date}"
+    )
+    requests.post(SLACK_WEBHOOK_URL, json={"text": message})
+
+
+# S3 설정
 BUCKET_NAME = Variable.get("BUCKET_NAME")
 S3_PATH = "airportschedule_loads3_csv"   # S3에 저장된 파일명 그대로 사용
 
@@ -39,7 +76,12 @@ def dag_airport_schedule_loadsnow():
         schema: str,
         table_name: str,
     ):
-        @task(task_id=task_id)
+        @task(
+            task_id=task_id,
+            on_failure_callback=slack_on_failure,   
+            on_success_callback=slack_on_success    
+        )
+        
         # 1️⃣ S3 CSV 가져오기
         def s3_to_snowflake():
             s3_hook = S3Hook(aws_conn_id="s3_conn_id")
