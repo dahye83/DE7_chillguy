@@ -23,10 +23,10 @@ def send_slack_failure_callback(context):
     exception = context.get('exception')
 
     data = f'''
-:rotating_light:DAG 실패
+:rotating_light: DAG 실패
 일시 : {execution_date}
 • DAG: {dag_id}
-• TASK: {task_id}
+• Task: {task_id}
 ```{exception}```
 '''    
     json = {'text': data}
@@ -37,7 +37,7 @@ def send_slack_success_callback(context):
     dag_id = context.get('dag').dag_id
 
     data = f'''
-:white_check_mark:DAG 성공
+:white_check_mark: DAG 성공
 일시 : {execution_date}
 • DAG: {dag_id}
 '''
