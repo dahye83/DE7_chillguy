@@ -24,8 +24,12 @@
 
 ### ➡️ DFD
 ![데이터 흐름도]()
+s3 구조
+
+메달리온 아키텍처
 
 ### 🗄️ ERD
+실버 레이어를 기준으로 작성되었다 ~~
 ![](docs/image/erd.png)
 
 ### 📁 Github 디렉터리
@@ -34,22 +38,17 @@ de7_chillguy/
 ├── airflow/ 
 │   ├── dags/
 │   │   ├── ingestion/     # 데이터 수집 DAG
-│   │   │   ├──static/     # 변경되지 않는 데이터                
-│   │   │   └──dynamic/    # 주기적으로 갱신되는 데이터
+│   │   │   ├──static/        # 변경되지 않는 데이터                
+│   │   │   └──dynamic/       # 주기적으로 갱신되는 데이터
 │   │   └── elt/           # ELT DAG
-│   │
 │   └── plugins/           # DAG 공통 모듈
-│
 ├── sql/                   # Snowflake 테이블 생성 쿼리
-│
 ├── data/                  # 사용된 원천 데이터
 │   ├── dynamic/
 │   └── static/
-│
 ├── docs/
 │   ├── image/
 │   └── docker.md          # Airflow - Docker 환경설정 설명
-│
 ├── .gitignore
 ├── docker-compose.yaml
 ├── Dockerfile
@@ -58,8 +57,7 @@ de7_chillguy/
 ```
 
 ### ⏱️ Airflow DAGs
-
-![슬랙 알림 이미지]()
+- 각 대그 요약
 
 <br>
 
