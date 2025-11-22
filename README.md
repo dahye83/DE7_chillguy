@@ -16,6 +16,7 @@
 
 ## 📝 프로젝트 구성
 ### ⚙️ 도커 환경 구축하기
+https://github.com/dahye83/DE7_chillguy/blob/%2330-README/docs/docker.md
 
 ### 🧱 아키텍처 구조도
 - Data Source -> Data Lake(AWS S3) -> Data Warehouse(Snowflake) -> Visualization(Preset)
@@ -52,3 +53,4 @@
 
 ## 📊 대시보드 구성
 ![](docs/image/dashboard.png)
+
