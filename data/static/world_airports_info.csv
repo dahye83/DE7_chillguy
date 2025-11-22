@@ -1,0 +1,221 @@
+﻿IATA_CODE,ICAO_CODE,AIRPORT_NAME_KOR,AIRPORT_NAME_ENG,REGION,NATION_NAME_KOR,NATION_NAME_ENG,CITY_KOR,CITY_ENG,LATITUDE,LONGITUDE
+YVR,CYVR,밴쿠버 국제공항,Vancouver International Airport,북미캐나다,캐나다,Canada,밴쿠버,Vancouver,49.193901062,-123.183998108
+YYZ,CYYZ,토론토 피어슨 국제공항,Toronto Pearson International Airport,북미캐나다,캐나다,Canada,토론토,Toronto,43.6772,-79.6306
+BRU,EBBR,브뤼셀 공항,Brussels Airport,유럽,벨기에,Belgium,브뤼셀,Brussels,50.901402,4.48444
+FRA,EDDF,프랑크푸르트 공항,Frankfurt Airport,유럽,독일,Germany,프랑크푸르트,Frankfurt,50.030241,8.561096
+HEL,EFHK,헬싱키 공항,Helsinki Airport,유럽,핀란드,Finland,헬싱키,Helsinki,60.318363,24.963341
+LHR,EGLL,히드로 공항,Heathrow Airport,유럽,영국,United Kingdom,런던히드로,London,51.4706,-0.461941
+AMS,EHAM,암스테르담 스키폴 공항,Amsterdam AirportSchiphol,유럽,네덜란드,Netherlands,암스테르담,Amsterdam,52.308601,4.76389
+CPH,EKCH,코펜하겐 카스트럽 공항,Copenhagen Airport Kastrup,유럽,덴마크,Denmark,코펜하겐,Copenhagen,55.617900848389,12.656000137329
+OSL,ENGM,오슬로 공항 가르데르모엔,Oslo Airport Gardermoen,유럽,노르웨이,Norway,오슬로,Oslo,60.193901,11.1004
+WAW,EPWA,바르샤바 쇼팽 공항,Warsaw Chopin Airport,유럽,폴란드,Poland,바르샤바,Warsaw,52.165699,20.9671
+WAW,EPWA,바르샤바 쇼팽 공항(신공항),Warsaw Chopin Airport(New),유럽,폴란드,Poland,바르샤바,Warsaw,52.165699,20.9671
+ADD,HAAB,아디스 아바바 볼레 국제공항,Addis Ababa Bole International Airport,중동아프리카,이디오피아,Ethiopia,아디스아바바,Addis Ababa,8.97789,38.799301
+ATL,KATL,하츠필드 잭슨 애틀랜타 국제공항,HartsFieldJackson Atlanta International Airport,북미캐나다,미국,United States of America,애틀랜타,Atlanta,33.6367,-84.428101
+BOS,KBOS,로건 국제공항,Logan International Airport,북미캐나다,미국,United States of America,보스턴,Boston,42.36197,-71.0079
+CVG,KCVG,신시내티/노던 켄터키 국제공항,Cincinnati/Northern Kentucky International Airport,북미캐나다,미국,United States of America,신시내티,Cincinnati,39.048801,-84.667801
+DFW,KDFW,댈러스/포트워스 국제공항,Dallas/Fort Worth International Airport,북미캐나다,미국,United States of America,댈러스,Dallas,32.896801,-97.038002
+DTW,KDTW,디트로이트 메트로폴리탄 웨인 카운티 공항,Detroit Metropolitan Wayne County Airport,북미캐나다,미국,United States of America,디트로이트,Detroit,42.21377,-83.353786
+EWR,KEWR,뉴어크 리버티 국제공항,Newark Liberty International Airport,북미캐나다,미국,United States of America,뉴어크 리버티 국제공항,Newark,40.692501,-74.168701
+IAD,KIAD,워싱턴 덜레스 국제공항,Washington Dulles International Airport,북미캐나다,미국,United States of America,워싱톤,Washington,38.9445,-77.455803
+IND,KIND,인디애나폴리스 국제공항,Indianapolis International Airport,북미캐나다,미국,United States of America,인디애나폴리스,Indianapolis,39.7173,-86.294403
+JFK,KJFK,존 F 케네디 국제공항,John F Kennedy International Airport,북미캐나다,미국,United States of America,뉴욕,New York,40.639447,-73.779317
+LAS,KLAS,해리 리드 국제공항,Harry Reid International Airport,북미캐나다,미국,United States of America,라스베이거스,Las Vegas,36.083361,-115.151817
+LAX,KLAX,로스 앤젤레스 국제공항,Los Angeles International Airport,북미캐나다,미국,United States of America,로스앤젤레스,Los Angeles,33.942501,-118.407997
+MEM,KMEM,멤피스 국제공항,Memphis International Airport,북미캐나다,미국,United States of America,멤피스,Memphis,35.0424,-89.9767
+MIA,KMIA,마이애미 국제공항,Miami International Airport,북미캐나다,미국,United States of America,마이애미,Miami,25.79319953918457,-80.29060363769531
+MSP,KMSP,미니애폴리스 세인트폴 국제공항,Minneapolis Saint Paul International Airport,북미캐나다,미국,United States of America,미니애폴리스,Minneapolis,44.880081,-93.221741
+ORD,KORD,오헤어 국제공항,OHare International Airport,북미캐나다,미국,United States of America,시카고,Chicago,41.9786,-87.9048
+SDF,KSDF,루이빌 국제공항,Louisville International Airport,북미캐나다,미국,United States of America,루이즈빌,Louisville,38.1744,-85.736
+SEA,KSEA,시애틀 타코마 국제공항,Seattle Tacoma International Airport,북미캐나다,미국,United States of America,시애틀,Seattle,47.447943,-122.310276
+SFO,KSFO,샌프란시스코 국제공항,San Francisco International Airport,북미캐나다,미국,United States of America,샌프란시스코,San Francisco,37.619806,-122.374821
+SLC,KSLC,솔트레이크시티 국제공항,Salt Lake City International Airport,북미캐나다,미국,United States of America,솔트레이크시티,Salt Lake City,40.78886,-111.979866
+BCN,LEBL,바르셀로나 엘프라트 공항,Barcelona El Prat Airport,유럽,스페인,Spain,바르셀로나,Barcelona,41.2971,2.07846
+MAD,LEMD,아돌포 수아레스 마드리드 바라하스 공항,Adolfo Suarez Madrid Barajas Airport,유럽,스페인,Spain,마드리드,Madrid,40.471926,-3.56264
+CDG,LFPG,샤를 드골 공항,Charles de Gaulle Airport,유럽,프랑스,France,파리,Paris,49.012798,2.55
+MXP,LIMC,밀라노 말펜사 공항,Milan Malpensa Airport,유럽,이탈리아,Italia,밀라노,Milan,45.6306,8.72811
+FCO,LIRF,레오나르도 다빈치 피우미치노 공항,Leonardo da Vinci Fiumicino Airport,유럽,이탈리아,Italia,로마,Rome,41.804532,12.251998
+PRG,LKPR,바츨라프 하벨 공항프라하,Vaclav Havel AirportPrague,유럽,체코,Czech Republic,프라하,Prague,50.100874,14.259911
+IST,LTFM,이스탄불 공항,Istanbul Airport,유럽,터키,Republic of Turkiye,이스탄불,Istanbul,41.261297,28.741951
+NLU,MMSM,펠리페 앙헬레스 국제공항,Felipe Angeles International Airport,중남미,멕시코,Mexico,펠리페 앙헬레스,Mexico Santa Lucia,19.7357,-99.0257
+AKL,NZAA,오클랜드 공항,Auckland Airport,아시아태평양,뉴질랜드,New Zealand,오클랜드,Auckland,-37.01199,174.786331
+AUH,OMAA,아부다비 국제공항,Abu Dhabi International Airport,중동아프리카,아랍에미레이트,United Arab Emirates,아부다비 국제공항,Abu Dhabi,24.443764,54.651718
+DXB,OMDB,두바이 국제공항,Dubai International Airport,중동아프리카,아랍에미레이트,United Arab Emirates,두바이,Dubai,25.2527999878,55.3643989563
+DOH,OTHH,하마드 국제공항,Hamad International Airport,중동아프리카,카타르,Qatar,도하,Doha,25.273056,51.608056
+ANC,PANC,테드 스티븐스 앵커리지 국제공항,Ted Stevens Anchorage International Airport,북미캐나다,미국,United States of America,앵커리지,Anchorage,61.179004,-149.992561
+SPN,PGSN,사이판 국제공항,Saipan International Airport,아시아태평양,북마리아나 제도,Northern Mariana Islands,사이판,Saipan,15.119,145.729004
+GUM,PGUM,안토니오 B. 원 팻 국제공항,Antonio B. Won Pat International Airport,아시아태평양,괌,Guam,괌,Guam,13.485,144.797282
+HNL,PHNL,호놀룰루 국제공항,Honolulu International Airport,북미캐나다,미국,United States of America,호놀룰루,Honolulu,21.32062,-157.924228
+KHH,RCKH,가오슝 국제공항,Kaohsiung International Airport,아시아태평양,대만,Taiwan,가오슝,Kaohsiung,22.577101,120.349998
+RMQ,RCMQ,타이중 공항,Taichung Airport,아시아태평양,대만,Taiwan,타이중,Taichung,24.2647,120.621002
+TSA,RCSS,타이베이 쑹산 공항,Taipei Songshan Airport,아시아태평양,대만,Taiwan,송산공항,Taipei,25.069401,121.552002
+TPE,RCTP,타이완 타오위안 국제공항,Taiwan Taoyuan International Airport,아시아태평양,대만,Taiwan,타이완 타오위안 국제 공항,Taipei,25.0777,121.233002
+NRT,RJAA,나리타 국제공항,Narita International Airport,아시아태평양,일본,Japan,도쿄/나리타,Tokyo,35.764702,140.386002
+IBR,RJAH,이바라키공항,Ibaraki Airport,아시아태평양,일본,Japan,이바라키,Ibaraki,36.181099,140.414993
+KIX,RJBB,간사이 국제공항,Kansai International Airport,아시아태평양,일본,Japan,간사이,Osaka,34.427299,135.244003
+UKB,RJBE,고베 공항,Kobe Airport,아시아태평양,일본,Japan,고베,Osaka,34.6328010559082,135.2239990234375
+OBO,RJCB,도카치 오비히로 공항,Tokachi Obihiro Airport,아시아태평양,일본,Japan,오비히로,Obihiro,42.7332992554,143.216995239
+CTS,RJCC,신치토세 공항,New Chitose Airport,아시아태평양,일본,Japan,삿포로,Sapporo,42.7752,141.692001
+HKD,RJCH,하코다테 공항,Hakodate Airport,아시아태평양,일본,Japan,하코다테,Hakodate,41.77,140.822006
+FUK,RJFF,후쿠오카 공항,Fukuoka Airport,아시아태평양,일본,Japan,후쿠오카,Fukuoka,33.585899353027344,130.4510040283203
+KOJ,RJFK,가고시마 공항,Kagoshima Airport,아시아태평양,일본,Japan,가고시마,Kagoshima,31.8034,130.718994
+OIT,RJFO,오이타 공항,Oita Airport,아시아태평양,일본,Japan,오이타,Oita,33.479400634799994,131.736999512
+KKJ,RJFR,기타큐슈 공항,Kitakyushu Airport,아시아태평양,일본,Japan,기타규슈,Kitakyushu,33.845901,131.035004
+KMJ,RJFT,구마모토 공항,Kumamoto Airport,아시아태평양,일본,Japan,구마모토,Kumamoto,32.83729934692383,130.85499572753906
+NGS,RJFU,나가사키 공항,Nagasaki Airport,아시아태평양,일본,Japan,나가사키,Nagasaki,32.916901,129.914001
+NGO,RJGG,주부 국제공항,Chubu Centrair International Airport,아시아태평양,일본,Japan,나고야,Nagoya,34.858398,136.804993
+KMQ,RJNK,고마쓰 공항,Komatsu Airport,아시아태평양,일본,Japan,고마쓰,Komatsu,36.3946,136.406998
+FSZ,RJNS,시즈오카 공항,Shizuoka Airport,아시아태평양,일본,Japan,시즈오카,Shizuoka,34.796043,138.187752
+HIJ,RJOA,히로시마 공항,Hiroshima Airport,아시아태평양,일본,Japan,히로시마,Hiroshima,34.4361,132.919006
+MYJ,RJOM,마쓰야마 공항,Matsuyama Airport,아시아태평양,일본,Japan,마쓰야마,Matsuyama,33.82720184326172,132.6999969482422
+TKS,RJOS,도쿠시마 공항,Tokushima Airport,아시아태평양,일본,Japan,도쿠시마,Tokushima,34.132801,134.606995
+TAK,RJOT,다카마쓰 공항,Takamatsu Airport,아시아태평양,일본,Japan,다카마쓰,Takamatsu,34.2141990662,134.01600647
+KIJ,RJSN,니가타 공항,Niigata Airport,아시아태평양,일본,Japan,니가타,Niigata,37.9558982849,139.121002197
+SDJ,RJSS,센다이 공항,Sendai Airport,아시아태평양,일본,Japan,센다이,Sendai,38.139702,140.917007
+HND,RJTT,하네다 공항,Haneda Airport,아시아태평양,일본,Japan,하네다,Tokyo,35.552299,139.779999
+KWJ,RKJJ,광주공항,Gwangju Airport,아시아태평양,대한민국,Republic of Korea,광주,Gwangju,35.123173,126.805444
+KUV,RKJK,군산 공항,Gunsan Airport,아시아태평양,대한민국,Republic of Korea,군산,Gunsan,35.903801,126.615997
+RSU,RKJY,여수 공항,Yeosu Airport,아시아태평양,대한민국,Republic of Korea,여수,Yeosu,34.84230041503906,127.61699676513672
+WJU,RKNW,원주공항,Wonju Airport,아시아태평양,대한민국,Republic of Korea,원주,Wonju,37.437113,127.960051
+YNY,RKNY,양양국제공항,Yangyang International Airport,아시아태평양,대한민국,Republic of Korea,양양,Yangyang,38.061298,128.669006
+CJU,RKPC,제주국제공항,Jeju International Airport,아시아태평양,대한민국,Republic of Korea,제주,Jeju,33.512058,126.492548
+PUS,RKPK,김해국제공항,Gimhae International Airport,아시아태평양,대한민국,Republic of Korea,김해,Busan,35.179501,128.938004
+HIN,RKPS,사천공항,Sacheon Airport,아시아태평양,대한민국,Republic of Korea,사천,Jinju,35.088591,128.071747
+USN,RKPU,울산공항,Ulsan Airport,아시아태평양,대한민국,Republic of Korea,울산,Ulsan,35.59349823,129.352005005
+ICN,RKSI,인천국제공항,Incheon International Airport,아시아태평양,대한민국,Republic of Korea,인천,Seoul,37.469101,126.450996
+GMP,RKSS,김포국제공항,Gimpo International Airport,아시아태평양,대한민국,Republic of Korea,김포,Seoul,37.5583,126.791
+KPO,RKTH,포항경주공항,Pohang Airport,아시아태평양,대한민국,Republic of Korea,포항경주,Pohang,35.987955,129.420383
+TAE,RKTN,대구국제공항,Daegu International Airport,아시아태평양,대한민국,Republic of Korea,대구,Daegu,35.896872,128.65531
+CJJ,RKTU,청주국제공항,Cheongju International Airport,아시아태평양,대한민국,Republic of Korea,청주,Cheongju,36.717008,127.498741
+OKA,ROAH,나하 공항,Naha Airport,아시아태평양,일본,Japan,오키나와,Okinawa,26.195801,127.646004
+ISG,ROIG,신이시가키 공항,New Ishigaki Airport,아시아태평양,일본,Japan,이시가키,Ishigaki,24.396389,124.245
+CRK,RPLC,클라크 국제공항,Clark International Airport,아시아태평양,필리핀,Philippines,클라크 국제공항,Angeles/Mabalacat,15.186,120.559998
+MNL,RPLL,니노이 아키노 국제공항,Ninoy Aquino International Airport,아시아태평양,필리핀,Philippines,마닐라,Manila,14.5086,121.019997
+TAG,RPSP,보홀 팡라오 국제공항,Bohol Panglao International Airport,아시아태평양,필리핀,Philippines,팡라로,Panglao,9.573045,123.770143
+KLO,RPVK,칼리보 국제공항,Kalibo International Airport,아시아태평양,필리핀,Philippines,칼리보,Kalibo,11.679400444,122.375999451
+CEB,RPVM,막탄 세부 국제공항,Mactan Cebu International Airport,아시아태평양,필리핀,Philippines,세부,Cebu,10.309261,123.97974
+ALA,UAAA,알마티 국제공항,Almaty International Airport,아시아태평양,카자흐스탄,Kazakhstan,알마티,Almaty,43.354267,77.042828
+CIT,UAII,쉼켄트 국제공항,Shymkent International Airport,아시아태평양,카자흐스탄,Kazakhstan,쉼켄트,Shymkent,42.364200592041016,69.47889709472656
+TAS,UTTT,타슈켄트 국제공항,Tashkent International Airport,아시아태평양,우즈베키스탄,Uzbekistan,타슈켄트,Tashkent,41.2579,69.281197
+KTI,VDTI,테초 국제공항,Techo International Airport,아시아태평양,캄보디아,Cambodia,크라체,Kratie,11.359987,104.921272
+HKG,VHHH,홍콩 국제공항,Hong Kong International Airport,아시아태평양,홍콩,HongKong,홍콩,Hong Kong,22.308901,113.915001
+DEL,VIDP,인디라 간디 국제공항,Indira Gandhi International Airport,아시아태평양,인도,India,델리,Delhi,28.55563,77.09519
+VTE,VLVT,왓타이 국제공항,Wattay International Airport,아시아태평양,라오스,Laos,비엔티안,Vientiane,17.988300323500003,102.56300354
+MFM,VMMC,마카오 국제공항,Macau International Airport,아시아태평양,마카오,Macao,마카오,Macao,22.149599,113.592003
+KTM,VNKT,트리부반 국제공항,Tribhuvan International Airport,아시아태평양,네팔,Nepal,카트만두,Kathmandu,27.6966,85.3591
+DMK,VTBD,돈므앙 국제공항,Don Mueang International Airport,아시아태평양,태국,Thailand,돈므앙(방콕),Bangkok,13.9126,100.607002
+BKK,VTBS,수완나품 공항,Suvarnabhumi Airport,아시아태평양,태국,Thailand,수안나폼(방콕),Bangkok,13.6811,100.747002
+CNX,VTCC,치앙마이 국제공항,Chiang Mai International Airport,아시아태평양,태국,Thailand,치앙마이,Chiang Mai,18.7667999268,98.962600708
+HKT,VTSP,푸켓 국제공항,Phuket International Airport,아시아태평양,태국,Thailand,푸껫,Phuket,8.1132,98.316902
+HPH,VVCI,깟비 국제공항,Cat Bi International Airport,아시아태평양,베트남,Vietnam,카트비,Haiphong,20.81686,106.722994
+CXR,VVCR,깜라인 국제공항,Cam Ranh International Airport,아시아태평양,베트남,Vietnam,깜라인(나트랑),Nha Trang,11.9982,109.219002
+DAD,VVDN,다낭 국제공항,Da Nang International Airport,아시아태평양,베트남,Vietnam,다낭,Da Nang,16.0439,108.198997
+HAN,VVNB,노이바이 국제공항,Noi Bai International Airport,아시아태평양,베트남,Vietnam,노이바이(하노이),Hanoi,21.221201,105.806999
+PQC,VVPQ,푸꾸옥 국제공항,Phu Quoc International Airport,아시아태평양,베트남,Vietnam,푸꾸옥,Phu Quoc Island,10.1698,103.9931
+SGN,VVTS,탄손누트 국제공항,Tan Son Nhat International Airport,아시아태평양,베트남,Vietnam,호찌민,Ho Chi Minh,10.8188,106.652
+RGN,VYYY,양곤 국제공항,Yangon International Airport,아시아태평양,미얀마,Myanmar,양곤,Yangon,16.907300949099998,96.1332015991
+DPS,WADD,응우라라이 국제공항,Ngurah Rai International Airport,아시아태평양,인도네시아,Indonesia,덴파사(응우라 라이),Denpasar Bali,-8.748409,115.167123
+BKI,WBKK,코타키나발루 국제공항,Kota Kinabalu International Airport,아시아태평양,말레이시아,Malaysia,코타키나발루,Kota Kinabalu,5.932743,116.049324
+BWN,WBSB,브루나이 국제공항,Brunei International Airport,"아시아,태평양",브루나이,Brunei,반다르스리,Bandar Seri Begawan,4.9442,114.928001
+CGK,WIII,수카르노 하타 국제공항,Soekarno Hatta International Airport,아시아태평양,인도네시아,Indonesia,자카르타(수카르노 하타) 국제 공항,Jakarta,-6.12557,106.655998
+KUL,WMKK,쿠알라룸푸르 국제공항,Kuala Lumpur International Airport,아시아태평양,말레이시아,Malaysia,쿠알라룸푸르,Kuala Lumpur,2.74558,101.709999
+PEN,WMKP,페낭 국제공항,Penang International Airport,아시아태평양,말레이시아,Malaysia,페낭,Penang,5.297140121459961,100.2770004272461
+SIN,WSSS,싱가포르 창이 공항,Singapore Changi Airport,아시아태평양,싱가포르,Singapore,싱가포르,Singapore,1.35019,103.994003
+BNE,YBBN,브리즈번 공항,Brisbane Airport,대양주,오스트레일리아,Australia,브리즈번,Brisbane,-27.38419914245605,153.11700439453125
+SYD,YSSY,시드니 공항,Sydney Airport,대양주,오스트레일리아,Australia,시드니,Sydney,-33.946098,151.177002
+PEK,ZBAA,베이징 서우두 국제공항,Beijing Capital International Airport,아시아태평양,중국,China,베이징,Beijing,40.0801010131836,116.58499908447266
+PKX,ZBAD,베이징 다싱 국제공항,Beijing Daxing International Airport,아시아태평양,중국,China,베이징 다싱 국제공항,Beijing,39.509945,116.41092
+SJW,ZBSJ,스자좡 정딩 국제공항,Shijiazhuang Zhengding International Airport,아시아태평양,중국,China,석가장,Shijiazhuang,38.280701,114.696999
+TSN,ZBTJ,톈진 빈하이 국제공항,Tianjin Binhai International Airport,아시아태평양,중국,China,천진,Tianjin,39.1244010925,117.346000671
+TYN,ZBYN,타이위안 우수 국제공항,Taiyuan Wusu International Airport,아시아태평양,중국,China,태원,Taiyuan,37.746899,112.627998
+DYG,ZGDY,장자제 허화 공항,Zhangjiajie Hehua Airport,아시아태평양,중국,China,장가계,Zhangjiajie,29.1028,110.443001
+CAN,ZGGG,광저우 바이윈 국제공항,Guangzhou Baiyun International Airport,아시아태평양,중국,China,광저우,Guangzhou,23.392401,113.299004
+CSX,ZGHA,창사 황화 국제공항,Changsha Huanghua International Airport,아시아태평양,중국,China,창사(장사),Changsha,28.189199,113.220001
+SZX,ZGSZ,선전 바오안 국제공항,Shenzhen Baoan International Airport,아시아태평양,중국,China,선전(심천),Shenzhen,22.639299,113.810997
+CGO,ZHCC,정저우 신정 국제공항,Zhengzhou Xinzheng International Airport,아시아태평양,중국,China,정저우,Zhengzhou,34.526497,113.849165
+EHU,ZHEC,어저우 화후 공항,Ezhou Huahu Airport,아시아태평양,중국,China,어저우화후,Echeng District,30.341178,115.03926
+INC,ZLIC,인촨 허둥 국제공항,Yinchuan Hedong International Airport,아시아태평양,중국,China,인촨(은천),Yinchuan,38.322758,106.393214
+XIY,ZLXY,시안 셴양 국제공항,Xian Xianyang International Airport,아시아태평양,중국,China,시안,Xian,34.447102,108.751999
+UBN,ZMCK,칭기즈칸 국제공항,Chinggis Khaan International Airport,아시아태평양,몽골,Mongolia,칭기즈 칸(신 울란바토르) 국제공항,Ulaanbaatar,47.646916,106.819833
+KMG,ZPPP,쿤밍 창수이 국제공항,Kunming Changshui International Airport,아시아태평양,중국,China,쿤밍,Kunming,25.110313,102.936743
+XMN,ZSAM,샤먼 가오치 국제공항,Xiamen Gaoqi International Airport,아시아태평양,중국,China,샤먼 가오치 국제공항,Xiamen,24.54400062561035,118.12799835205078
+FOC,ZSFZ,푸저우 창러 국제공항,Fuzhou Changle International Airport,아시아태평양,중국,China,푸저우(복주),Fuzhou,25.934669,119.66318
+HGH,ZSHC,항저우 샤오산 국제공항,Hangzhou Xiaoshan International Airport,아시아태평양,중국,China,항저우,Hangzhou,30.23609,120.428865
+TNA,ZSJN,지난 야오창 국제공항,Jinan Yaoqiang International Airport,아시아태평양,중국,China,지난,Jinan,36.857201,117.216003
+NKG,ZSNJ,난징 루커우 국제공항,Nanjing Lukou International Airport,아시아태평양,중국,China,남경,Nanjing,31.735032,118.865949
+NTG,ZSNT,난퉁 싱둥 공항,Nantong Xingdong Airport,아시아태평양,중국,China,난퉁,Nantong,32.073566,120.980076
+HFE,ZSOF,허페이 신차오 국제공항,Hefei Xinqiao International Airport,아시아태평양,중국,China,허페이,Hefei,31.98779,116.9769
+PVG,ZSPD,상하이 푸둥 국제공항,Shanghai Pudong International Airport,아시아태평양,중국,China,푸동,Shanghai,31.1434,121.805
+TAO,ZSQD,칭다오 자오둥 국제공항,Qingdao Jiaodong International Airport,아시아태평양,중국,China,청도,Qingdao,36.361953,120.088171
+SHA,ZSSS,상하이 훙차오 국제공항,Shanghai Hongqiao International Airport,아시아태평양,중국,China,상해/홍차우,Shanghai,31.198104,121.33426
+TXN,ZSTX,황산 툰시 국제공항,Huangshan Tunxi International Airport,아시아태평양,중국,China,황산,Huangshan,29.733299255371094,118.25599670410156
+WEH,ZSWH,웨이하이 다수이보 공항,Weihai Dashuibo Airport,아시아태평양,중국,China,위해,Weihai,37.187099,122.228996
+WUX,ZSWX,쑤난 슈오팡 국제공항,Sunan Shuofang International Airport,아시아태평양,중국,China,수난 슈오팡 국제공항,Wuxi,31.4944000244,120.429000854
+WNZ,ZSWZ,원저우 룽완 국제공항,Wenzhou Longwan International Airport,아시아태평양,중국,China,원저우,Wenzhou,27.910572,120.853465
+YNZ,ZSYN,옌청 난양 국제공항,Yancheng Nanyang International Airport,아시아태평양,중국,China,옌청,Yancheng,33.425833,120.203056
+YNT,ZSYT,옌타이 펑라이 국제공항,Yantai Penglai International Airport,아시아태평양,중국,China,연대,Yantai,37.659724,120.978124
+TFU,ZUTF,청두 톈푸 국제공항,Chengdu Tianfu International Airport,아시아태평양,중국,China,청두 티안푸국제공항,Chengdu,30.31252,104.441284
+CTU,ZUUU,청두 솽류 국제공항,Chengdu Shuangliu International Airport,아시아태평양,중국,China,청두(성도),Chengdu,30.558257,103.945966
+CGQ,ZYCC,장춘 룽지아 국제공항,Changchun Longjia International Airport,아시아태평양,중국,China,장춘,Changchun,43.996201,125.684998
+HRB,ZYHB,하얼빈 타이핑 국제공항,Harbin Taiping International Airport,아시아태평양,중국,China,하얼빈,Harbin,45.623402,126.25
+DLC,ZYTL,다롄 저우수이쯔 국제공항,Dalian Zhoushuizi International Airport,아시아태평양,중국,China,대련,Dalian,38.965719,121.538477
+SHE,ZYTX,선양 타오셴 국제공항,Shenyang Taoxian International Airport,아시아태평양,중국,China,심양,Shenyang,41.639801,123.483002
+YNJ,ZYYJ,옌지 차오양촨 공항,Yanji Chaoyangchuan Airport,아시아태평양,중국,China,연길,Yanji,42.8828010559,129.451004028
+WUH,ZHHH,우한 톈허 국제공항,Wuhan Tianhe International Airport,아시아태평양,중국,China,우한,Wuhan,30.774798,114.213723
+MEX,MMMX,멕시코 시티 국제공항,Mexico City International Airport,중남미,멕시코,Mexico,멕시코시티,Mexico City,19.435137,-99.071328
+PNH,VDPP,프놈펜 국제공항,Phnom Penh International Airport,아시아태평양,캄보디아,Cambodia,프놈펜,Phnom Penh,11.5466,104.844002
+BTH,WIDD,항 나딤 공항,Hang Nadim Airport,아시아태평양,인도네시아,Indonesia,바탐,Batam,1.12103,104.119003
+DLI,VVDL,리엔크엉 공항,Lien Khuong Airport,아시아태평양,베트남,Vietnam,달랏,Da Lat,11.750556,108.366997
+MUC,EDDM,뮌헨 공항,Munich Airport,유럽,독일,Germany,뮌헨,Munich,48.353802,11.7861
+CAI,HECA,카이로 국제공항,Cairo International Airport,중동아프리카,이집트,Egypt,카이로,Cairo,30.111534,31.396694
+OKJ,RJOB,오카야마 공항,Okayama Airport,아시아태평양,일본,Japan,오카야마,Okayama,34.756901,133.854996
+CKG,ZUCK,충칭 장베이 국제공항,Chongqing Jiangbei International Airport,아시아태평양,중국,China,충칭,Chongqing,29.712254,106.651895
+KMI,RJFM,미야자키 공항,Miyazaki Airport,아시아태평양,일본,Japan,미야자키,Miyazaki,31.877199173,131.449005127
+SHI,RORS,시모지시마 공항,Shimojishima Airport,아시아태평양,일본,Japan,시모지시마,Shimojishima,24.8267,125.144997
+BUD,LHBP,부다페스트 페렌츠 리스트 국제공항,Budapest Ferenc Liszt International Airport,유럽,헝가리,Hungary,부다페스트,Budapest,47.43018,19.262393
+MDG,ZYMD,무단장 공항,Mudanjiang Hailang Airport,아시아태평양,중국,China,목단강,Mudanjiang,44.5241012573,129.569000244
+AOJ,RJSA,아오모리 공항,Aomori Airport,아시아태평양,일본,Japan,아오모리,Aomori,40.73469924926758,140.6909942626953
+HSG,RJFS,사가공항,Saga Airport,아시아태평양,일본,Japan,사가,Saga,33.149700164799995,130.302001953
+YGJ,RJOH,미호 요나고 공항,Miho Yonago Airport,아시아태평양,일본,Japan,요나고,Yonago,35.492199,133.235992
+HAK,ZJHK,하이커우 메이란 국제공항,Haikou Meilan International Airport,아시아태평양,중국,China,하이커우,Haikou,19.9349,110.459
+WRO,EPWR,니콜라우스 코페르니쿠스 공항,Copernicus AirportWrocLaw,유럽,폴란드,Poland,코페르니쿠스 공항 브로츠와프,Wroclaw,51.103719,16.882096
+VIE,LOWW,비엔나 국제공항,Vienna International Airport,유럽,오스트리아,Austria,비엔나,Vienna,48.110298,16.5697
+LIS,LPPT,리스본 포르텔라 공항,Lisbon Portela Airport,유럽,포르투갈,Portugal,리스본,Lisbon,38.7813,-9.13592
+YIH,ZHYC,이창 산샤 공항,Yichang Sanxia Airport,아시아태평양,중국,China,이창,Yichang,30.554132,111.482563
+NQZ,UACC,누르술탄 나자르바예프 국제공항,Nursultan Nazarbayev International Airport,아시아태평양,카자흐스탄,Kazakhstan,누르술탄 나자르바예프,Astana,51.027035,71.467094
+SYX,ZJSY,싼야 봉황국제공항,Sanya Phoenix International Airport,아시아태평양,중국,China,산야,Sanya,18.3029,109.412003
+TOY,RJNT,도야마 공항,Toyama Airport,아시아태평양,일본,Japan,도야마,Toyama,36.64830017089844,137.18800354003906
+YTY,ZSYA,양저우 타이저우 공항,Yangzhou Taizhou Airport,아시아태평양,중국,China,양저우,Yangzhou,32.5634,119.7198
+DAC,VGZR,샤잘랄 국제공항,Shahjalal International Airport,아시아태평양,방글라데시,Bangladesh,다카,Dhaka,23.843347,90.397783
+CMB,VCBI,반다라나이케 국제공항,Bandaranaike International Airport,아시아태평양,스리랑카,Sri Lanka,반다라나이케,Colombo,7.180759906768799,79.88410186767578
+JMU,ZYJM,자무쓰 공항,Jiamusi Dongjiao Airport,아시아태평양,중국,China,가목사,Jiamusi,46.843399,130.464996
+MEL,YMML,멜버른 공항,Melbourne Airport,대양주,오스트레일리아,Australia,멜버른,Melbourne,-37.661548,144.836432
+AKJ,RJEC,아사히카와 공항,Asahikawa Airport,아시아태평양,일본,Japan,아사히카와,Asahikawa,43.670799,142.447006
+PKZ,VLPS,빡쎄 국제공항,Pakse International Airport,아시아태평양,라오스,Laos,팍세,Pakse,15.132100105285645,105.78099822998048
+SAI,VDSA,씨엠립 국제공항,Siem Reap International Airport,아시아태평양,캄보디아,Cambodia,씨엠립 앙코르 국제공항,Siem Reap,13.369167,104.223056
+BAR,ZJQH,칭하이 보아오 공항,Qionghai Bo ao Airport,아시아태평양,중국,China,충하이보아오,Qionghai,19.140951,110.452766
+UBJ,RJDC,야마구치 우베 공항,Yamaguchi Ube Airport,아시아태평양,일본,Japan,우베,Ube,33.930000305200004,131.279006958
+SHM,RJBD,난키 시라하마 공항,Nanki Shirahama Airport,아시아태평양,일본,Japan,시라하마,Shirahama,33.6622009277,135.363998413
+ZRH,LSZH,취리히 공항,Zurich Airport,유럽,스위스,Swiss Confederation,취리히,Zurich,47.458056,8.548056
+YYC,CYYC,캘거리 국제공항,Calgary International Airport,북미캐나다,캐나다,Canada,캘거리,Calgary,51.118822,-114.009933
+ZAG,LDZA,플레소 공항,Franjo Tuđman Airport,유럽,크로아티아,Croatia,자그레브,Zagreb,45.742901,16.0688
+BEY,OLBA,베이루트 라픽 하리리 국제공항,Beirut Rafic Hariri International Airport,중동아프리카,레바논,Lebanon,베이루트,Beirut,33.820899963378906,35.488399505615234
+EVN,UDYZ,즈바르트노츠 국제공항,Zvartnots International Airport,아시아태평양,아르메니아,Armenia,예레반,Yerevan,40.1473007202,44.3959007263
+TBS,UGTB,트빌리시 국제공항,Tbilisi International Airport,아시아태평양,조지아,Georgia,조지아,Tbilisi,41.669201,44.9547
+YUL,CYUL,몬트리올 트뤼도 국제공항,Montreal Trudeau International Airport,북미캐나다,캐나다,Canada,몬트리올,Montreal,45.467837,-73.742294
+BSR,ORMM,바스라 국제공항,Basra International Airport,중동아프리카,이라크,Iraq,바스라국제공항,Basra,30.549101,47.662102
+DSN,ZBDS,오르도스 에진 호로 공항,Ordos Ejin Horo Airport,아시아태평양,중국,China,오르도스 에진 호로 국제 공항,Ordos,39.493514,109.8599
+ASB,UTAA,아시가바트 국제공항,Ashgabat International Airport,아시아태평양,투르크메니스탄,Turkmenistan,아시가바트,Ashgabad,37.986801,58.361
+HET,ZBHH,후허하오터 바이타 국제공항,Hohhot Baita International Airport,아시아태평양,중국,China,후허하오터,Hohhot,40.849658,111.824598
+DAT,ZBDT,다퉁 윈강 공항,Datong Yungang Airport,아시아태평양,중국,China,다통,Datong,40.061614,113.480032
+ESB,LTAC,에센보아 국제공항,Esenboga International Airport,유럽,터키,Republic of Turkiye,앙카라,Ankara,40.128101,32.995098
+KWE,ZUGY,구이양 룽둥바오 국제공항,Guiyang Longdongbao International Airport,아시아태평양,중국,China,꾸이양,Guiyang,26.541466,106.803331
+MRS,LFML,마르세유 프로방스 공항,Marseille Provence Airport,유럽,프랑스,France,마르세유,Marseille,43.438088,5.2125
+KWL,ZGKL,구이린 량장 국제공항,Guilin Liangjiang International Airport,아시아태평양,중국,China,계림,Guilin,25.219828,110.039553
+AGP,LEMG,말라가 공항,Malaga Airport,유럽,스페인,Spain,말라가,MAlaga,36.6749,-4.49911
+MDC,WAMM,삼 라툴랑이 국제공항,Sam Ratulangi International Airport,아시아태평양,인도네시아,Indonesia,마나도,Manado,1.549266,124.926319
+DWC,OMDW,알 막툼 국제공항,Al Maktoum International Airport,중동아프리카,아랍에미레이트,United Arab Emirates,알막툼,Dubai,24.896356,55.161389
+WUS,ZSWY,우이산 공항,Wuyishan Airport,아시아태평양,중국,China,우이산,Wuyishan,27.7019,118.000999
+ENH,ZHES,엔스 쉬자핑 공항,Enshi Xujiaping Airport,아시아태평양,중국,China,엔시,Enshi,30.320299,109.485001
+JUB,HJJJ,주바 국제공항,Juba International Airport,중동아프리카,수단,South Sudan,주바,Juba,4.87201,31.601101
+FRU,UCFM,마나스 국제공항,Manas International Airport,아시아태평양,키르기스스탄,Kyrgyz Republic,마나스 국제공항,Bishkek,43.061298,74.4776
