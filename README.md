@@ -4,26 +4,35 @@
 > 인천공항의 항공 데이터를 API/크롤링을 이용하여 데이터를 수집하고, AWS S3와 Snowflake에 데이터를 적재 및 변환하는 과정을 Airflow를 이용하여 자동화하는 파이프라인을 구축합니다.
 > 수집된 데이터를 통해 인천공항의 정보를 Preset을 이용한 대시보드로 시각화하여 제공합니다.
 
+<br>
+
 ## 💾 사용 데이터
 - [여객 출발 시간표](https://www.airport.kr/ap_ko/869/subview.do) <br>
 - [항공사 출발/도착 정보](https://www.airportal.go.kr/airport/aircraftInfo.do) <br>
 - [출·입국장별 승객예고](https://www.data.go.kr/data/15095066/openapi.do) <br>
 - [인천공항 여객기 운항 현황](https://www.data.go.kr/data/15112968/openapi.do)
 
+<br>
+
 ## 📝 프로젝트 구성
 ### ⚙️ 도커 환경 구축하기
 
 ### 🧱 아키텍처 구조도
 - Data Source -> Data Lake(AWS S3) -> Data Warehouse(Snowflake) -> Visualization(Preset)
+![]()
 
 ### ➡️ DFD
+![]()
 
 ### 🗄️ ERD
+![](docs/image/erd.png)
 
 ### 📁 Github 디렉터리
 
 ### ⏱️ Airflow DAGs
 
+
+<br>
 
 ## 🖥️ 사용 기술
 ### 🛠️ Data Engineering Toolkit
@@ -39,4 +48,7 @@
 ![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)
 ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)
 
+<br>
+
 ## 📊 대시보드 구성
+![](docs/image/dashboard.png)
