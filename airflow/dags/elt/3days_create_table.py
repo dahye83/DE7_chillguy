@@ -43,7 +43,7 @@ RAW AS (
         HOUR(TO_TIMESTAMP(SCHEDULED_TM)) AS TIME_SLOT,
         STATUS,
         COUNT(*) AS CNT
-    FROM SILVER.SL_PASSENGER_FLIGHTS_DAILY_MERGED
+    FROM SILVER.SL_3DAYS_DAILY_MERGED
     GROUP BY 1, 2
 )
 SELECT
@@ -62,7 +62,7 @@ CREATE OR REPLACE TABLE GOLD.GD_3DAYS_NATION_COUNT_DAILY AS
 SELECT
     NATION_NAME_KOR,
     COUNT(*) AS FLIGHT_CNT
-FROM SILVER.SL_PASSENGER_FLIGHTS_DAILY_MERGED
+FROM SILVER.SL_3DAYS_DAILY_MERGED
 WHERE STATUS = '출발'
 GROUP BY 1
 ORDER BY 1;
@@ -74,7 +74,7 @@ CREATE OR REPLACE TABLE GOLD.GD_3DAYS_CITY_COUNT_DAILY AS
 SELECT
     CITY_KOR,
     COUNT(*) AS FLIGHT_CNT
-FROM SILVER.SL_PASSENGER_FLIGHTS_DAILY_MERGED
+FROM SILVER.SL_3DAYS_DAILY_MERGED
 WHERE STATUS = '출발'
 GROUP BY 1
 ORDER BY 1;
@@ -104,16 +104,17 @@ with DAG(
         sql = sql_gold_hour_status_count
     )
 
-    create_gold_3days_nation_count_table_task = SnowflakeOperator(
-        task_id = 'create_gold_3days_nation_count_table_task',
-        snowflake_conn_id = 'snowflake_conn_id',
-        sql = sql_gold_nation_flight_count
-    )
+    # 사용되지 않는 태스크 주석처리
+    #create_gold_3days_nation_count_table_task = SnowflakeOperator(
+    #    task_id = 'create_gold_3days_nation_count_table_task',
+    #    snowflake_conn_id = 'snowflake_conn_id',
+    #    sql = sql_gold_nation_flight_count
+    #)
 
-    create_gold_3days_city_count_table_task = SnowflakeOperator(
-        task_id = 'create_gold_3days_city_count_table_task',
-        snowflake_conn_id = 'snowflake_conn_id',
-        sql = sql_gold_city_flight_count
-    )        
+    #create_gold_3days_city_count_table_task = SnowflakeOperator(
+    #    task_id = 'create_gold_3days_city_count_table_task',
+    #    snowflake_conn_id = 'snowflake_conn_id',
+    #    sql = sql_gold_city_flight_count
+    #)        
 
-    create_silver_table_task >> create_gold_3days_houly_count_table_task >> create_gold_3days_nation_count_table_task >> create_gold_3days_city_count_table_task
+    create_silver_table_task >> create_gold_3days_houly_count_table_task# >> create_gold_3days_nation_count_table_task >> create_gold_3days_city_count_table_task
