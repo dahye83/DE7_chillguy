@@ -85,7 +85,7 @@ de7_chillguy/
 │   └── plugins/           # DAG 공통 모듈
 ├── sql/                   # Snowflake 테이블 생성 쿼리
 ├── data/                  # 사용된 원천 데이터
-│   ├── dynamic/                # 
+│   ├── dynamic/                
 │   └── static/
 ├── docs/
 │   ├── image/
@@ -102,17 +102,27 @@ de7_chillguy/
 - 2번 DAG :
 - 3번 DAG :
 
-- 모든 DAG 설정에 아래 코드를 추가하여 DAG의 성공과 Task의 실패 알림을 슬랙으로 전달받도록 하였습니다.
-```python
-default_args={'on_failure_callback': send_slack_failure_callback}
-on_success_callback= send_slack_success_callback
-```
-![](docs/image/slack_alert.png)
+- 모든 DAG 공통 설정
+    - 14시 스케줄링 설정
+    ```python
+    schedule = '0 5 * * *' # UTC + 9시 스케줄링
+    ```
+    - DAG 실패시 3분 간격으로 3회 재시도 설정
+    ```python
+    default_args= {'retries': 3,
+                   'retry_delay': timedelta(minutes = 3)}
+    ```    
+    - DAG의 성공과 Task의 실패 알림을 슬랙으로 전달
+    ```python
+    default_args={'on_failure_callback': send_slack_failure_callback},
+    on_success_callback= send_slack_success_callback
+    ```
+    ![](docs/image/slack_alert.png)
 
 <br>
 
 ## 🖥️ 사용 기술
-### 🛠️ Data Engineering Toolkit
+### 🛠️ Data Engineering Pipeline Toolkit
 ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 ![Amazon S3](https://img.shields.io/badge/Amazon%20S3-FF9900?style=for-the-badge&logo=amazons3&logoColor=white)
 ![Snowflake](https://img.shields.io/badge/snowflake-%2329B5E8.svg?style=for-the-badge&logo=snowflake&logoColor=white)
