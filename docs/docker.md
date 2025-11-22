@@ -30,12 +30,13 @@
     ```
     - 실행 상태를 확인하였을 때 airflow-worker / airflow-scheduler / airflow-webserver / airflow-triggerer 가 실행중인지 확인한다.
 
-4. **Airflow Web UI**
+
+4. **파일 이동**
+    - 프로젝트의 airflow/dags/, plugins/ 하위 경로에 있는 파일들을 루트 폴더에 생성된 dags/ 경로로 이동시킨다.
+
+5. **Airflow Web UI**
     - `http://localhost:8080/`에 접속한다.
     - `ID: airflow, Password: airflow`로 로그인한다.
     ![](image/airflow_main.png)
     - 만약 `.env` 파일에 변수를 입력하지 않았거나, DAG에 오류가 있다면 상단 탭 아래에 오류가 표시된다.
     ![](image/airflow_error.png)
-
-5. **DAG, plugin 파일 이동**
-    - 프로젝트의 airflow/dags/하위 경로에 있는 파일들과 plugins 폴더를 루트 폴더에 생성된 dags/ 경로로 이동한다.
