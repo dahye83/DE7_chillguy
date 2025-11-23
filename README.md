@@ -20,18 +20,17 @@
 
 ### 🧱 아키텍처 구조도
 - Data Source -> Data Lake(**AWS S3**) -> Data Warehouse(**Snowflake**) -> Visualization(**Preset**)
-![](docs/image/architecture.png)
+![](docs/image/architecture_v2.png)
 
-### ➡️ DFD
-![데이터 흐름도]()
+### ➡️ 데이터 저장소 구조
 - **S3**
-```
+```src
 chillguy-bucket-seoul/
 ── dynamic/ # 변경되지 않는 정적 데이터
 │   ├── airportschedule_loads3.csv               # 7일간 비행 출발 계획표
 │   ├── airportpassengersnum_downloads_daily.csv # 내일 출입국 승객 예보
-│   ├── passenger_arrivals_daily.csv             # 최근 3일간 도착 비행 정보
-│   └── passenger_departures_daily.csv           # 최근 3일간 출발 비행 정보
+│   ├── 3days_arrivals_daily.csv                 # 최근 3일간 도착 비행 정보
+│   └── 3days_departures_daily.csv               # 최근 3일간 출발 비행 정보
 └── static/ # 매일/주기적으로 갱신되는 데이터
 │   ├── world_airports_info.csv                  # 세계 공항 정보
 └── └── final_airport.csv                        # 연간 운항 정보
@@ -81,9 +80,12 @@ de7_chillguy/
 │   │   ├── ingestion/     # 데이터 수집 DAG
 │   │   │   ├──static/          # 변경되지 않는 데이터                
 │   │   │   └──dynamic/         # 주기적으로 갱신되는 데이터
-│   │   └── elt/           # ELT DAG
+│   │   ├── elt/           # ELT DAG
+│   │   └── plugins/       # pipeline trigger
 │   └── plugins/           # DAG 공통 모듈
 ├── sql/                   # Snowflake 테이블 생성 쿼리
+│   ├── silver/
+│   └── gold/
 ├── data/                  # 사용된 원천 데이터
 │   ├── dynamic/                
 │   └── static/
@@ -98,25 +100,36 @@ de7_chillguy/
 ```
 
 ### ⏱️ Airflow DAGs
-- 1번 DAG :
-- 2번 DAG :
-- 3번 DAG :
+- **ingestion**
+    - dynamic
+        - 3days_loads3_csv.py: 3일간 운항 현황 데이터 수집, .csv 형식으로 S3에 저장 및 Snowflake 브론즈 테이블 생성
+        - airportpassengersnum_downloads_daily.py: 승객 예고 데이터 수집, .csv 형식으로 S3에 저장 및 Snowflake 브론즈 테이블 생성
+        - airportschedule_loads3_csv.py: 인천공항 7일간 출발 예정 데이터 수집, .csv 형식으로 S3에 저장
+        - airportschedule_loadsnow_csv.py: 인천공항 7일간 출발 예정 데이터 S3에서 로드 후 Snowflake 브론즈 테이블 생성
+        - gd_map_airline.py: 인천공항 7일간 출발 예정 데이터 골드 테이블 생성 ### elt로 옮겨
+        - sl_airport_info_7days.py: 인천공항 7일간 출발 예정 데이터 실버 테이블 생성 ### elt로 옮겨
+    - static
+        - airport_schedule_preprocessing.py: 
+        - s3_to_snowflake.py: S3에서 Snowflake로 적재하는 태스크 생성
+        - upload_csv_to_s3.py: S3에 .csv 파일을 업로드하는 태스크 생성
+- **elt**
+    - silver_layer_generation.py: 실버 테이블 생성
+    - gold_layer_generation.py: 골드 테이블 생성
+    - 3days_create_table.py: 3일간 운항 현황 데이터 실버, 골드 테이블 생성
+- **plugins**
+    - master_airport_pipeline.py: 인천공항 1년 데이터 파이프라인
 
 - 모든 DAG 공통 설정
-    - 14시 스케줄링 설정
     ```python
     schedule = '0 5 * * *' # UTC + 9시 스케줄링
-    ```
-    - DAG 실패시 3분 간격으로 3회 재시도 설정
-    ```python
     default_args= {'retries': 3,
-                   'retry_delay': timedelta(minutes = 3)}
-    ```    
-    - DAG의 성공과 Task의 실패 알림을 슬랙으로 전달
-    ```python
-    default_args={'on_failure_callback': send_slack_failure_callback},
+                   'retry_delay': timedelta(minutes = 3),
+                   'on_failure_callback': send_slack_failure_callback}
     on_success_callback= send_slack_success_callback
     ```
+    - 14시 스케줄링 설정
+    - DAG 실패시 3분 간격으로 3회 재시도 설정  
+    - DAG의 성공과 Task의 실패 알림을 슬랙으로 전달
     ![](docs/image/slack_alert.png)
 
 <br>
@@ -128,7 +141,7 @@ de7_chillguy/
 ![Snowflake](https://img.shields.io/badge/snowflake-%2329B5E8.svg?style=for-the-badge&logo=snowflake&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![Apache Airflow](https://img.shields.io/badge/Apache%20Airflow-017CEE?style=for-the-badge&logo=Apache%20Airflow&logoColor=white)
-![Static Badge](https://img.shields.io/badge/Preset-0DBD8B?style=for-the-badge)
+![Preset](https://img.shields.io/badge/Preset-0DBD8B?style=for-the-badge)
 
 ### 🤝 Collaboration & Management
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
