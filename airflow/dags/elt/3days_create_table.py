@@ -1,6 +1,6 @@
 from airflow.providers.snowflake.operators.snowflake import SnowflakeOperator
 from airflow import DAG
-from plugins.SlackAlert import send_slack_success_callback, send_slack_failure_callback
+from SlackAlert import send_slack_success_callback, send_slack_failure_callback
 
 from datetime import datetime, timedelta
 
@@ -118,3 +118,4 @@ with DAG(
     #)        
 
     create_silver_table_task >> create_gold_3days_houly_count_table_task# >> create_gold_3days_nation_count_table_task >> create_gold_3days_city_count_table_task
+
