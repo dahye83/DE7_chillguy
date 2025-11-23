@@ -15,7 +15,7 @@ import boto3
 # -----------------------------
 # Slack Webhook 설정 (Airflow Variable)
 # -----------------------------
-SLACK_WEBHOOK_URL = Variable.get("slack_webhook_url")
+SLACK_WEBHOOK_URL = Variable.get("slack_alert_url")
 
 # -----------------------------
 # S3 설정
@@ -85,7 +85,7 @@ with DAG(
     )
     def fetch_api_data():
         url = "https://apis.data.go.kr/B551177/passgrAnncmt/getPassgrAnncmt"
-        service_key = Variable.get("api_passenger_key")
+        service_key = Variable.get("serviceKey")
         all_items = []
         num_of_rows = 100
 

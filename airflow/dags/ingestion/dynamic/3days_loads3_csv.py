@@ -5,7 +5,7 @@ from airflow.models import Variable
 from airflow.decorators import task
 from airflow import DAG
 from airflow.operators.trigger_dagrun import TriggerDagRunOperator
-from plugins.SlackAlert import send_slack_success_callback, send_slack_failure_callback
+from SlackAlert import send_slack_success_callback, send_slack_failure_callback
 
 import logging
 import requests
@@ -262,3 +262,4 @@ with DAG(
     )
 
     load_task >> snowflake_task1 >> snowflake_task2 >> trigger_next_dag
+
