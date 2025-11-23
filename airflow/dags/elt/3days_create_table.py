@@ -86,10 +86,10 @@ with DAG(
     catchup = False,
     default_args = {
         'retries': 3,
-        'retry_delay' : timedelta(minutes = 3),     
+        'retry_delay' : timedelta(minutes = 3),
+        'on_failure_callback': send_slack_failure_callback
     },
     on_success_callback = send_slack_success_callback,
-    on_failure_callback = send_slack_failure_callback
 ) as dag:
     
     create_silver_table_task = SnowflakeOperator(
@@ -118,4 +118,5 @@ with DAG(
     #)        
 
     create_silver_table_task >> create_gold_3days_houly_count_table_task# >> create_gold_3days_nation_count_table_task >> create_gold_3days_city_count_table_task
+
 
