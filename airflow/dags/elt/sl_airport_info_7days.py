@@ -1,11 +1,13 @@
 from airflow import DAG
 from datetime import datetime, timedelta
 from airflow.providers.snowflake.operators.snowflake import SnowflakeOperator
+from SlackAlert import send_slack_success_callback, send_slack_failure_callback
 
 default_args = {
     "owner": "team_7_chill",
     "retries": 2,
-    "retry_delay": timedelta(minutes=3)
+    "retry_delay": timedelta(minutes=3),
+    "on_failure_callback": send_slack_failure_callback
 }
 
 with DAG(
@@ -14,7 +16,8 @@ with DAG(
     schedule_interval="30 5 * * *",  # 매일 14:30(임시)
     catchup=False,
     default_args=default_args,
-    tags=["silver", "airport_info", "static"]
+    tags=["silver", "airport_info", "static"],
+    on_success_callback= send_slack_success_callback
 ):
 
     transform_silver = SnowflakeOperator(
