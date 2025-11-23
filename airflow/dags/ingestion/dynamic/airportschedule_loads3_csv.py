@@ -10,7 +10,7 @@ import requests
 import traceback   
 
 #slack 설정 
-SLACK_WEBHOOK_URL = Variable.get("slack_webhook_url")
+SLACK_WEBHOOK_URL = Variable.get("slack_alert_url")
 
 def slack_on_failure(context):
     dag_id = context.get("dag").dag_id
