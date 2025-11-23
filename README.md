@@ -106,8 +106,6 @@ de7_chillguy/
         - airportpassengersnum_downloads_daily.py: 승객 예고 데이터 수집, .csv 형식으로 S3에 저장 및 Snowflake 브론즈 테이블 생성
         - airportschedule_loads3_csv.py: 인천공항 7일간 출발 예정 데이터 수집, .csv 형식으로 S3에 저장
         - airportschedule_loadsnow_csv.py: 인천공항 7일간 출발 예정 데이터 S3에서 로드 후 Snowflake 브론즈 테이블 생성
-        - gd_map_airline.py: 인천공항 7일간 출발 예정 데이터 골드 테이블 생성 ### elt로 옮겨
-        - sl_airport_info_7days.py: 인천공항 7일간 출발 예정 데이터 실버 테이블 생성 ### elt로 옮겨
     - static
         - airport_schedule_preprocessing.py: 
         - s3_to_snowflake.py: S3에서 Snowflake로 적재하는 태스크 생성
@@ -116,6 +114,8 @@ de7_chillguy/
     - silver_layer_generation.py: 실버 테이블 생성
     - gold_layer_generation.py: 골드 테이블 생성
     - 3days_create_table.py: 3일간 운항 현황 데이터 실버, 골드 테이블 생성
+    - gd_map_airline.py: 인천공항 7일간 출발 예정 데이터 골드 테이블 생성
+    - sl_airport_info_7days.py: 인천공항 7일간 출발 예정 데이터 실버 테이블 생성
 - **plugins**
     - master_airport_pipeline.py: 인천공항 1년 데이터 파이프라인
 
@@ -171,3 +171,4 @@ de7_chillguy/
 
 ### 전체 대시보드
 ![](docs/image/dashboard.png)
+
