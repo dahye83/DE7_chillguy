@@ -57,28 +57,28 @@ ORDER BY h.TIME_SLOT, s.STATUS;
 """
 
 # 골드 테이블2: 최근 3일간 인천공항에서 출발한 비행기가 방문한 나라별 횟수
-sql_gold_nation_flight_count = """
-CREATE OR REPLACE TABLE GOLD.GD_3DAYS_NATION_COUNT_DAILY AS
-SELECT
-    NATION_NAME_KOR,
-    COUNT(*) AS FLIGHT_CNT
-FROM SILVER.SL_3DAYS_DAILY_MERGED
-WHERE STATUS = '출발'
-GROUP BY 1
-ORDER BY 1;
-"""
+#sql_gold_nation_flight_count = """
+#CREATE OR REPLACE TABLE GOLD.GD_3DAYS_NATION_COUNT_DAILY AS
+#SELECT
+#    NATION_NAME_KOR,
+#    COUNT(*) AS FLIGHT_CNT
+#FROM SILVER.SL_3DAYS_DAILY_MERGED
+#WHERE STATUS = '출발'
+#GROUP BY 1
+#ORDER BY 1;
+#"""
 
 # 골드 테이블3: 최근 3일간 인천공항에서 출발한 비행기가 방문한 지역 횟수
-sql_gold_city_flight_count = """
-CREATE OR REPLACE TABLE GOLD.GD_3DAYS_CITY_COUNT_DAILY AS
-SELECT
-    CITY_KOR,
-    COUNT(*) AS FLIGHT_CNT
-FROM SILVER.SL_3DAYS_DAILY_MERGED
-WHERE STATUS = '출발'
-GROUP BY 1
-ORDER BY 1;
-"""
+#sql_gold_city_flight_count = """
+#CREATE OR REPLACE TABLE GOLD.GD_3DAYS_CITY_COUNT_DAILY AS
+#SELECT
+#    CITY_KOR,
+#    COUNT(*) AS FLIGHT_CNT
+#FROM SILVER.SL_3DAYS_DAILY_MERGED
+#WHERE STATUS = '출발'
+#GROUP BY 1
+#ORDER BY 1;
+#"""
 
 with DAG(
     dag_id = '3dyas_create_sl_gd_table',
@@ -86,10 +86,10 @@ with DAG(
     catchup = False,
     default_args = {
         'retries': 3,
-        'retry_delay' : timedelta(minutes = 3),     
+        'retry_delay' : timedelta(minutes = 3),
+        'on_failure_callback': send_slack_failure_callback
     },
     on_success_callback = send_slack_success_callback,
-    on_failure_callback = send_slack_failure_callback
 ) as dag:
     
     create_silver_table_task = SnowflakeOperator(

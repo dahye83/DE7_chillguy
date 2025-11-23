@@ -111,7 +111,7 @@ def extract():
     items1 = get_flight_data('arrival')
     items2 = get_flight_data('departure')
 
-    logging.info('Passenger Flights Data Extract Complete')
+    logging.info('3days Flights Data Extract Complete')
     return {'items1': items1, 'items2': items2}
 
 def transform(items):
@@ -203,16 +203,16 @@ def load(df1, df2):
     conn.put_object(
         Body = csvBuffer1.getvalue(),
         Bucket = Variable.get('bucket_name'),
-        Key = 'dynamic/passenger_arrivals_daily.csv'
+        Key = 'dynamic/3days_arrivals_daily.csv'
     )
 
     conn.put_object(
         Body = csvBuffer2.getvalue(),
         Bucket = Variable.get('bucket_name'),
-        Key = 'dynamic/passenger_departures_daily.csv'
+        Key = 'dynamic/3days_departures_daily.csv'
     )
 
-    logging.info('Passenger Flights Data Load Complete')
+    logging.info('3days Flights Data Load Complete')
 
 with DAG(
     dag_id = '3days_to_s3',
@@ -221,10 +221,10 @@ with DAG(
     catchup = False,
     default_args = {
         'retries': 3,
-        'retry_delay' : timedelta(minutes = 3),     
+        'retry_delay' : timedelta(minutes = 3),
+        'on_failure_callback': send_slack_failure_callback
     },
     on_success_callback = send_slack_success_callback,
-    on_failure_callback = send_slack_failure_callback
 ) as dag:
     
     items = extract()
@@ -237,9 +237,9 @@ with DAG(
     SCHEMA = 'BRONZE'
 
     snowflake_task1 = create_s3_to_snowflake_task(
-        task_id = 'passenger_arrival_to_snowflake',
+        task_id = '3days_arrival_to_snowflake',
         s3_bucket = Variable.get('bucket_name'),
-        s3_key = 'dynamic/passenger_arrivals_daily.csv',
+        s3_key = 'dynamic/3days_arrivals_daily.csv',
         snowflake_conn_id = 'snowflake_conn_id',
         database = DATABASE,
         schema = SCHEMA,
@@ -247,9 +247,9 @@ with DAG(
     )
 
     snowflake_task2 = create_s3_to_snowflake_task(
-        task_id = 'passenger_departure_to_snowflake',
+        task_id = '3days_departure_to_snowflake',
         s3_bucket = Variable.get('bucket_name'),
-        s3_key = 'dynamic/passenger_departures_daily.csv',
+        s3_key = 'dynamic/3days_departures_daily.csv',
         snowflake_conn_id = 'snowflake_conn_id',
         database = DATABASE,
         schema = SCHEMA,
