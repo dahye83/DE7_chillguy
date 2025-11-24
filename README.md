@@ -27,13 +27,13 @@
 ```src
 chillguy-bucket-seoul/
 ── dynamic/ # 변경되지 않는 정적 데이터
-│   ├── airportschedule_loads3.csv               # 7일간 비행 출발 계획표
-│   ├── airportpassengersnum_downloads_daily.csv # 내일 출입국 승객 예보
-│   ├── 3days_arrivals_daily.csv                 # 최근 3일간 도착 비행 정보
-│   └── 3days_departures_daily.csv               # 최근 3일간 출발 비행 정보
+│   ├── airportschedule_loads3.csv               # 7일간 비행 출발 계획표(0day ~ +6day)
+│   ├── airportpassengersnum_downloads_daily.csv # 내일 출입국 승객 예보(+1 day)
+│   ├── 3days_arrivals_daily.csv                 # 최근 3일간 도착 비행 정보(-2day ~ 0day)
+│   └── 3days_departures_daily.csv               # 최근 3일간 출발 비행 정보(-2day ~ 0day)
 └── static/ # 매일/주기적으로 갱신되는 데이터
 │   ├── world_airports_info.csv                  # 세계 공항 정보
-└── └── final_airport.csv                        # 연간 운항 정보
+└── └── final_airport.csv                        # 연간 운항 정보 (24.11~25.11)
 ```
 
 - **Medallion Architecture (Snowflake)**
@@ -42,10 +42,10 @@ TEAM_7_CHILL
 │
 ├── BRONZE      
 │       (웹 크롤링/오픈API → S3 → Snowflake)
-│       • 3일 운항 정보 Raw(출발, 도착)
-│       • 7일 여객 스케줄 Raw
-│       • 1년치 여객 스케줄 Raw(24.11~25.11) 
-│       • 승객 예고 Raw
+│       • 3일 운항 정보 Raw(출발, 도착) (-2day ~ 0day)
+│       • 7일 여객 스케줄 Raw (0day ~ +6day)
+│       • 1년치 여객 스케줄 Raw(24.11~25.11)
+│       • 승객 예고 Raw (+1 day)
 │       • 세계 공항 정보 Raw
 ├── SILVER 
 │       (대시보드용 요약 전 단계)     
@@ -107,7 +107,7 @@ de7_chillguy/
         - airportschedule_loads3_csv.py: 인천공항 7일간 출발 예정 데이터 수집, .csv 형식으로 S3에 저장
         - airportschedule_loadsnow_csv.py: 인천공항 7일간 출발 예정 데이터 S3에서 로드 후 Snowflake 브론즈 테이블 생성
     - static
-        - airport_schedule_preprocessing.py: 
+        - airport_schedule_preprocessing.py: 연간 운항 정보 전처리
         - s3_to_snowflake.py: S3에서 Snowflake로 적재하는 태스크 생성
         - upload_csv_to_s3.py: S3에 .csv 파일을 업로드하는 태스크 생성
 - **elt**
@@ -116,6 +116,8 @@ de7_chillguy/
     - 3days_create_table.py: 3일간 운항 현황 데이터 실버, 골드 테이블 생성
     - gd_map_airline.py: 인천공항 7일간 출발 예정 데이터 골드 테이블 생성
     - sl_airport_info_7days.py: 인천공항 7일간 출발 예정 데이터 실버 테이블 생성
+    - silver_airport_passengers_build.py: 승객 예보 실버 테이블 생성
+    - gold_airport_passengers_build.py: 승객 예보 골드 테이블 생성
 - **plugins**
     - master_airport_pipeline.py: 인천공항 1년 데이터 파이프라인
 
